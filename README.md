@@ -100,9 +100,72 @@
             </div>
         </section>
     </main>
+    body {
+    font-family: Arial, sans-serif;
+    background: #181818;
+    color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #262626;
+    padding: 20px 0;
+    text-align: center;
+}
+header h1 {
+    margin: 0;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+nav ul li a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+}
+main {
+    padding: 30px;
+}
+section {
+    margin-bottom: 40px;
+}
+article {
+    background: #222;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+footer {
+    background: #262626;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}
     <footer>
         <p>&copy; 2025 Portal dos Jogos</p>
     </footer>
     <script src="script.js"></script>
 </body>
 </html># site-jogos
+document.getElementById('comentarioForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const nome = document.getElementById('nome').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+    if (nome && mensagem) {
+        adicionarComentario(nome, mensagem);
+        document.getElementById('comentarioForm').reset();
+    }
+});
+
+function adicionarComentario(nome, mensagem) {
+    const lista = document.getElementById('listaComentarios');
+    const div = document.createElement('div');
+    div.className = 'comentario';
+    div.innerHTML = `<strong>${nome}</strong>: ${mensagem}`;
+    lista.prepend(div);
+}
